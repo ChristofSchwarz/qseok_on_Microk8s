@@ -163,4 +163,11 @@ curl -s https://raw.githubusercontent.com/kubernetes/helm/master/scripts/get | s
 helm init --wait --upgrade
 helm repo update
 
+###############################################################################
+### Install JQ
+###############################################################################
+# JQ makes life easy with parsing JSON reponses when we'll talk to APIs like
+# Keycloak later
+
+sudo apt-get install jq -y
 
