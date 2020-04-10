@@ -15,11 +15,12 @@ set -xe
 ###############################################################################
 # Settings / Parameters
 ###############################################################################
+source settings.sh
 # Select release (qlik-stable or qlik-edge)
-QLIK_RELEASE="qlik-stable"
-HOSTNAME="qlik-shared-vm.q-nnect.net"
-KEYCLOAKCLIENTSECRET=$(cat keycloakclientsecret.txt)  # text file created in deploy_2_
-echo "Using Keycloak Client Secret $KEYCLOAKCLIENTSECRET"
+#QLIK_RELEASE="qlik-stable"
+#HOSTNAME="qlik-shared-vm.q-nnect.net"
+#KEYCLOAKCLIENTSECRET=$(cat keycloakclientsecret.txt)  # text file created in deploy_2_
+#echo "Using Keycloak Client Secret $KEYCLOAKCLIENTSECRET"
 
 ###############################################################################
 ### Deploy Qliksense
