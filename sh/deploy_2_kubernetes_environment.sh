@@ -300,8 +300,7 @@ curl -s \
         \"enabled\": true,  \
         \"clientAuthenticatorType\": \"client-secret\",  \
         \"redirectUris\": [  \
-            \"https://192.168.56.234/login/callback\",  \
-            \"https://192.168.56.234/\"  \
+            \"https://$HOSTNAME/login/callback\"  \
         ],  \
         \"webOrigins\": [],  \
         \"notBefore\": 0,  \
