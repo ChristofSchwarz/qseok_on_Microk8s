@@ -292,8 +292,95 @@ curl -s \
   -X POST "$KEYCLOAKURL/auth/admin/realms/master/clients" \
   -H "Authorization: Bearer $TKN" \
   -H "Content-Type: application/json" \
-  -d "{\"clientId\":\"qliklogin\", \"name\":\"Login for Qlik Sense on Kubernetes\", \"description\":\"\", \"surrogateAuthRequired\": false, \"enabled\": true, \"clientAuthenticatorType\":\"client-secret\", \"redirectUris\": [\"https://$HOSTNAME/login/callback\", \"https://$HOSTNAME/\"], \"webOrigins\": [], \"notBefore\": 0, \"bearerOnly\": false, \"consentRequired\": false, \"standardFlowEnabled\": true, \"implicitFlowEnabled\": true, \"directAccessGrantsEnabled\": true, \"serviceAccountsEnabled\": true, \"publicClient\": false, \"frontchannelLogout\": false, \"protocol\":\"openid-connect\", \"attributes\": {\"saml.assertion.signature\":\"false\", \"saml.force.post.binding\":\"false\", \"saml.multivalued.roles\":\"false\", \"saml.encrypt\":\"false\", \"saml.server.signature\":\"false\", \"saml.server.signature.keyinfo.ext\":\"false\", \"exclude.session.state.from.auth.response\":\"false\", \"saml_force_name_id_format\":\"false\", \"saml.client.signature\":\"false\", \"tls.client.certificate.bound.access.tokens\":\"false\", \"saml.authnstatement\":\"false\", \"display.on.consent.screen\":\"false\", \"saml.onetimeuse.condition\":\"false\"}, \"authenticationFlowBindingOverrides\": {}, \"fullScopeAllowed\": true, \"nodeReRegistrationTimeout\": -1, \"protocolMappers\": [{\"name\":\"Groups Mapper\", \"protocol\":\"openid-connect\", \"protocolMapper\":\"oidc-group-membership-mapper\", \"consentRequired\": false, \"config\": { \"full.path\":\"false\", \"id.token.claim\":\"true\", \"access.token.claim\":\"true\", \"claim.name\":\"groupmemberships\", \"userinfo.token.claim\":\"true\"}}, {\"name\":\"email\", \"protocol\":\"openid-connect\", \"protocolMapper\":\"oidc-usermodel-property-mapper\", \"consentRequired\": false, \"config\": {\"userinfo.token.claim\":\"true\", \"user.attribute\":\"email\", \"id.token.claim\":\"true\", \"access.token.claim\":\"true\", \"claim.name\":\"email\", \"jsonType.label\":\"String\"}}], \"defaultClientScopes\": [\"web-origins\", \"role_list\", \"roles\", \"profile\", \"email\"], \"optionalClientScopes\": [\"address\", \"phone\", \"offline_access\", \"microprofile-jwt\"], \"access\": {\"view\": true, \"configure\": true, \"manage\": true}}"
-
+  -d "{
+        "clientId": "qliklogin", \
+        "name": "Login for Qlik Sense on Kubernetes",  \
+        \"description\": \"\",  \
+        \"surrogateAuthRequired\": false,  \
+        \"enabled\": true,  \
+        \"clientAuthenticatorType\": \"client-secret\",  \
+        \"redirectUris\": [  \
+            \"https://192.168.56.234/login/callback\",  \
+            \"https://192.168.56.234/\"  \
+        ],  \
+        \"webOrigins\": [],  \
+        \"notBefore\": 0,  \
+        \"bearerOnly\": false,  \
+        \"consentRequired\": false,  \
+        \"standardFlowEnabled\": true,  \
+        \"implicitFlowEnabled\": true,  \
+        \"directAccessGrantsEnabled\": true,  \
+        \"serviceAccountsEnabled\": true,  \
+        \"publicClient\": false,  \
+        \"frontchannelLogout\": false,  \
+        \"protocol\": \"openid-connect\",  \
+        \"attributes\": {  \
+            \"saml.assertion.signature\": \"false\",  \
+            \"saml.force.post.binding\": \"false\",  \
+            \"saml.multivalued.roles\": \"false\",  \
+            \"saml.encrypt\": \"false\",  \
+            \"saml.server.signature\": \"false\",  \
+            \"saml.server.signature.keyinfo.ext\": \"false\",  \
+            \"exclude.session.state.from.auth.response\": \"false\",  \
+            \"saml_force_name_id_format\": \"false\",  \
+            \"saml.client.signature\": \"false\",  \
+            \"tls.client.certificate.bound.access.tokens\": \"false\",  \
+            \"saml.authnstatement\": \"false\",  \
+            \"display.on.consent.screen\": \"false\",  \
+            \"saml.onetimeuse.condition\": \"false\"  \
+        },  \
+        \"authenticationFlowBindingOverrides\": {},  \
+        \"fullScopeAllowed\": true,  \
+        \"nodeReRegistrationTimeout\": -1,  \
+        \"protocolMappers\": [  \
+            {  \
+                \"name\": \"Groups Mapper\",  \
+                \"protocol\": \"openid-connect\",  \
+                \"protocolMapper\": \"oidc-group-membership-mapper\",  \
+                \"consentRequired\": false,  \
+                \"config\": {  \
+                    \"full.path\": \"false\",  \
+                    \"id.token.claim\": \"true\",  \
+                    \"access.token.claim\": \"true\",  \
+                    \"claim.name\": \"groupmemberships\",  \
+                    \"userinfo.token.claim\": \"true\"  \
+                }  \
+            },  \
+            {  \
+                \"name\": \"email\",  \
+                \"protocol\": \"openid-connect\",  \
+                \"protocolMapper\": \"oidc-usermodel-property-mapper\",  \
+                \"consentRequired\": false,  \
+                \"config\": {  \
+                    \"userinfo.token.claim\": \"true\",  \
+                    \"user.attribute\": \"email\",  \
+                    \"id.token.claim\": \"true\",  \
+                    \"access.token.claim\": \"true\",  \
+                    \"claim.name\": \"email\",  \
+                    \"jsonType.label\": \"String\"  \
+                }  \
+            }  \
+        ],  \
+        \"defaultClientScopes\": [  \
+            \"web-origins\",  \
+            \"role_list\",  \
+            \"roles\",  \
+            \"profile\",  \
+            \"email\"  \
+        ],  \
+        \"optionalClientScopes\": [  \
+            \"address\",  \
+            \"phone\",  \
+            \"offline_access\",  \
+            \"microprofile-jwt\"  \
+        ],  \
+        \"access\": {  \
+            \"view\": true,  \
+            \"configure\": true,  \
+            \"manage\": true  \
+        }  \
+    }"
+    
 echo "get new client's id ..."
 # it is using jq library which we installed above.
 CLIENTID=$(curl -s \
