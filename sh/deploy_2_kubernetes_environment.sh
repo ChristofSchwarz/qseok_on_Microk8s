@@ -309,5 +309,5 @@ CLIENTSECRET=$(curl -s \
  | jq '.value' -r)
 
 echo "New secret is $CLIENTSECRET"
-echo "DEFAULTCLIENTSECRET=$CLIENTSECRET" >>settings.sh
+echo "KEYCLOAKCLIENTSECRET=$CLIENTSECRET" >>settings.sh
 
