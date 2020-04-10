@@ -1,4 +1,7 @@
-// create and sign a jwt token for the person ("sub") provided as argument
+// Author: Christof Schwarz, christof.schwarz@qlik.com
+//
+// NodeJS app that creates and signs a jwt token for the person ("sub") provided as 
+// command-line argument
 // usage: 
 // nodejs createjwt.js anyuser
 
