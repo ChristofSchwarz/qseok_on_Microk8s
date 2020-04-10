@@ -13,10 +13,10 @@ set -xe
 #
 
 # Prepare "empty" machine by installing docker, kubernetes, etc.
-bash deploy_requirements.sh
+bash deploy_1_requirements.sh
 
 # Prepare existing kubernetes installation by deploying required services
-bash deploy_kubernetes_environment.sh
+bash deploy_2_kubernetes_environment.sh
 
 # Deploy qliksense
-bash deploy_qliksense.sh
+bash deploy_3_qliksense.sh
