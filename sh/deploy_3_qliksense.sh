@@ -5,8 +5,8 @@ set -xe
 # Qlik-Kubernetes-Deployment
 ###############################################################################
 #
-# @author      Matthias Greiner
-# @contact     Matthias.Greiner@q-nnect.com
+# @author      Matthias Greiner, Christof Schwarz
+# @contact     Matthias.Greiner@q-nnect.com, csw@qlik.com
 # @link        https://q-nnect.com
 # @copyright   Copyright (c) 2008-2020 Q-nnect AG <service@q-nnect.com>
 # @license         https://q-nnect.com
