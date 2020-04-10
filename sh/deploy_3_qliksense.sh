@@ -93,6 +93,7 @@ mongodb:
 
 edge-auth:
   config:
+    # needed for self-signed certificate
     enforceTLS: false
     secureCookies: false
     
@@ -102,14 +103,17 @@ elastic-infra:
       service:
         nodePorts:
           https: 443
-        type: NodePort
-  
+        type: NodePort  
+" >qliksense.yaml
+
+# Create separate file idp.yaml
+echo "
 identity-providers:
   secrets:
-    idpConfigs: $(cat identity-providers.json|sed 's/\\n/\\\\n/g'|tr -d '\n'|tr -s ' ')
-" >>qliksense.yaml
+    idpConfigs: $(cat identity-providers.json|tr -d '\n'|tr -s ' ')
+" >idp.yaml
 
-helm upgrade --install qlik $QLIK_RELEASE/qliksense -f qliksense.yaml
+helm upgrade --install qlik $QLIK_RELEASE/qliksense -f qliksense.yaml -f idp.yaml
 
 # in order for Edge-Auth to accept an IPD (Keycloak) over https with a self-signed certificate
 # we need to patch its deployment and set environment variable NODE_TLS_REJECT_UNAUTHORIZED=0
