@@ -5,12 +5,14 @@ set -xe
 # Qlik-Kubernetes-Deployment
 ###############################################################################
 #
-# @author      Matthias Greiner
-# @contact     Matthias.Greiner@q-nnect.com
+# @author      Matthias Greiner, Christof Schwarz
+# @contact     Matthias.Greiner@q-nnect.com, csw@qlik.com
 # @link        https://q-nnect.com
 # @copyright   Copyright (c) 2008-2020 Q-nnect AG <service@q-nnect.com>
 # @license         https://q-nnect.com
 #
+
+HOSTNAME="qlik-shared-vm.q-nnect.net" 
 
 
 ###############################################################################
@@ -251,3 +253,60 @@ spec:
               serviceName: keycloak-svc
               servicePort: 8080
 EOF
+
+####################################################################################
+### Configure Keycloak using API
+####################################################################################
+
+KEYCLOAKURL="http://localhost:32080"
+
+echo "Keycloak should now be ready on $KEYCLOAKURL ..."
+until $(curl -s --output /dev/null --connect-timeout 5 --max-time 6 --head --fail $KEYCLOAKURL/auth); do
+    echo "waiting for response at $KEYCLOAKURL/auth"
+    sleep 5
+done
+echo 'Keycloak is now ready.'
+
+
+echo "Get keycloak access_token $KEYCLOAKURL ..."
+TKN=$(curl -s \
+  -X POST "$KEYCLOAKURL/auth/realms/master/protocol/openid-connect/token" \
+  -d "username=admin" \
+  -d "password=admin" \
+  -d "client_id=admin-cli" \
+  -d "grant_type=password" | jq '.access_token' -r)
+
+#echo "Changing theme to qliktheme"
+#curl -s \
+#  -X PUT "$KEYCLOAKURL/auth/admin/realms/master" \
+#  -H "Authorization: Bearer $TKN" \
+#  -H "Content-Type: application/json" \
+#  -d '{"loginTheme":"qliktheme"}'
+
+echo "Creating Keycloak Client ..."
+# remove newline from .json
+#CLIENTJSON=$(tr -d '\r\n' <keycloak-client-settings.json)
+
+curl -s \
+  -X POST "$KEYCLOAKURL/auth/admin/realms/master/clients" \
+  -H "Authorization: Bearer $TKN" \
+  -H "Content-Type: application/json" \
+  -d "{\"clientId\":\"qliklogin\", \"name\":\"Login for Qlik Sense on Kubernetes\", \"description\":\"\", \"surrogateAuthRequired\": false, \"enabled\": true, \"clientAuthenticatorType\":\"client-secret\", \"redirectUris\": [\"https://$HOSTNAME/login/callback\", \"https://$HOSTNAME/\"], \"webOrigins\": [], \"notBefore\": 0, \"bearerOnly\": false, \"consentRequired\": false, \"standardFlowEnabled\": true, \"implicitFlowEnabled\": true, \"directAccessGrantsEnabled\": true, \"serviceAccountsEnabled\": true, \"publicClient\": false, \"frontchannelLogout\": false, \"protocol\":\"openid-connect\", \"attributes\": {\"saml.assertion.signature\":\"false\", \"saml.force.post.binding\":\"false\", \"saml.multivalued.roles\":\"false\", \"saml.encrypt\":\"false\", \"saml.server.signature\":\"false\", \"saml.server.signature.keyinfo.ext\":\"false\", \"exclude.session.state.from.auth.response\":\"false\", \"saml_force_name_id_format\":\"false\", \"saml.client.signature\":\"false\", \"tls.client.certificate.bound.access.tokens\":\"false\", \"saml.authnstatement\":\"false\", \"display.on.consent.screen\":\"false\", \"saml.onetimeuse.condition\":\"false\"}, \"authenticationFlowBindingOverrides\": {}, \"fullScopeAllowed\": true, \"nodeReRegistrationTimeout\": -1, \"protocolMappers\": [{\"name\":\"Groups Mapper\", \"protocol\":\"openid-connect\", \"protocolMapper\":\"oidc-group-membership-mapper\", \"consentRequired\": false, \"config\": { \"full.path\":\"false\", \"id.token.claim\":\"true\", \"access.token.claim\":\"true\", \"claim.name\":\"groupmemberships\", \"userinfo.token.claim\":\"true\"}}, {\"name\":\"email\", \"protocol\":\"openid-connect\", \"protocolMapper\":\"oidc-usermodel-property-mapper\", \"consentRequired\": false, \"config\": {\"userinfo.token.claim\":\"true\", \"user.attribute\":\"email\", \"id.token.claim\":\"true\", \"access.token.claim\":\"true\", \"claim.name\":\"email\", \"jsonType.label\":\"String\"}}], \"defaultClientScopes\": [\"web-origins\", \"role_list\", \"roles\", \"profile\", \"email\"], \"optionalClientScopes\": [\"address\", \"phone\", \"offline_access\", \"microprofile-jwt\"], \"access\": {\"view\": true, \"configure\": true, \"manage\": true}}"
+
+echo "get new client's id ..."
+# it is using jq library which we installed above.
+CLIENTID=$(curl -s \
+  -X GET "$KEYCLOAKURL/auth/admin/realms/master/clients?clientId=qliklogin" \
+  -H "Authorization: Bearer $TKN" \
+ | jq '.[0].id' -r)
+
+echo "Get secret of client $CLIENTID"
+
+CLIENTSECRET=$(curl -s \
+  -X GET "$KEYCLOAKURL/auth/admin/realms/master/clients/$CLIENTID/client-secret" \
+  -H "Authorization: Bearer $TKN" \
+ | jq '.value' -r)
+
+echo "New secret is $CLIENTSECRET"
+echo "$CLIENTSECRET" >keycloakclientsecret.txt
+
