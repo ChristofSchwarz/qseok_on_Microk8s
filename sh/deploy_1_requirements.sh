@@ -82,18 +82,20 @@ sudo service nfs-kernel-server restart
 ###############################################################################
 ### Install NodeJS
 ###############################################################################
-# echo "Installing Node JS ..."
-# sudo apt-get install nodejs -y
-# echo "Installing Node Package Manager npm ..."
-# sudo apt-get install npm -y
+echo "Installing Node JS ..."
+sudo apt-get install nodejs -y
+sudo apt-get install nodejs-dev node-gyp libssl1.0-dev -y  
+echo "Installing Node Package Manager npm ..."
+sudo apt-get install npm -y
 
 echo "Creating private/public key pair"
 openssl genrsa -out private.key 1024
 openssl rsa -in private.key -pubout -out public.key
 
-# echo "Installing NodeJS packages fs, jsonwebtoken"
-# npm install -g fs
-# npm install -g jsonwebtoken
+echo "Installing NodeJS packages fs, jsonwebtoken"
+echo '{}' >package.json 
+npm install fs
+npm install jsonwebtoken
 
 ###############################################################################
 ### Install Kubernetes
