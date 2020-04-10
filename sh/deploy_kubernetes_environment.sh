@@ -234,3 +234,20 @@ EOF
 echo 'Waiting until keycloak is ready ...'
 sudo kubectl wait --for=condition=available --timeout=3600s deployment/keycloak
 
+echo 'Configuring ingress route /auth to Keycloak ...'
+cat <<EOF | sudo kubectl apply -f -
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: keycloak-ingress
+  annotations:
+    kubernetes.io/ingress.class: qlik-nginx
+spec:
+  rules:
+    - http:
+        paths:
+          - path: /auth(/|$)(.*)
+            backend:
+              serviceName: keycloak-svc
+              servicePort: 8080
+EOF
