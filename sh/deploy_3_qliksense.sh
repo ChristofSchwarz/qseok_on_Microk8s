@@ -69,7 +69,7 @@ identity-providers:
 #          pem: |-
 EOF
 
-# in order for Keycloak to work on https with a self-signed certificate, we need to patch
-# edge-auth deployment and set an environment variable NODE_TLS_REJECT_UNAUTHORIZED=0
+# in order for Edge-Auth to accept an IPD (Keycloak) over https with a self-signed certificate
+# we need to patch its deployment and set environment variable NODE_TLS_REJECT_UNAUTHORIZED=0
 
 kubectl patch deployment qlik-edge-auth -p '{"spec":{"template":{"spec":{"containers":[{"name":"edge-auth", "env":[{"name":"NODE_TLS_REJECT_UNAUTHORIZED","value":"0"}]}]}}}}'
