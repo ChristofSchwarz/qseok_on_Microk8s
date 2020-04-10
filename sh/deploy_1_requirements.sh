@@ -16,9 +16,7 @@ set -xe
 ###############################################################################
 # Settings / Parameters
 ###############################################################################
-# Choose which kubernetes version should be used
-# KUBERNETES_VERSION="1.14"
-KUBERNETES_VERSION="1.15"
+source settings.sh
 
 ###############################################################################
 ### Install Docker
