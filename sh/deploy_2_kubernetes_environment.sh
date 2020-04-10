@@ -185,9 +185,9 @@ spec:
             mountPath: /opt/jboss/keycloak/themes/qliktheme
         env:
         - name: KEYCLOAK_USER
-          value: "admin"
+          value: "$QLIK_ADMIN_USER"
         - name: KEYCLOAK_PASSWORD
-          value: "admin"
+          value: "$QLIK_ADMIN_PWD"
         - name: PROXY_ADDRESS_FORWARDING
           value: "true"
         - name: DB_VENDOR
@@ -272,8 +272,8 @@ echo 'Keycloak is now ready.'
 echo "Get keycloak access_token $KEYCLOAKURL ..."
 TKN=$(curl -s \
   -X POST "$KEYCLOAKURL/auth/realms/master/protocol/openid-connect/token" \
-  -d "username=admin" \
-  -d "password=admin" \
+  -d "username=$QLIK_ADMIN_USER" \
+  -d "password=$QLIK_ADMIN_PWD" \
   -d "client_id=admin-cli" \
   -d "grant_type=password" | jq '.access_token' -r)
 
