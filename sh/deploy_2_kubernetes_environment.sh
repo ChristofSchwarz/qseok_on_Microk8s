@@ -292,9 +292,9 @@ curl -s \
   -X POST "$KEYCLOAKURL/auth/admin/realms/master/clients" \
   -H "Authorization: Bearer $TKN" \
   -H "Content-Type: application/json" \
-  -d "{
-        "clientId": "qliklogin", \
-        "name": "Login for Qlik Sense on Kubernetes",  \
+  -d "{ \
+        \"clientId\": \"qliklogin\", \
+        \"name\": \"Login for Qlik Sense on Kubernetes\",  \
         \"description\": \"\",  \
         \"surrogateAuthRequired\": false,  \
         \"enabled\": true,  \
