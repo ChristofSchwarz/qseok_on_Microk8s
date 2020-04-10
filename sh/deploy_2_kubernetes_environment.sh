@@ -11,8 +11,9 @@ set -xe
 # @copyright   Copyright (c) 2008-2020 Q-nnect AG <service@q-nnect.com>
 # @license         https://q-nnect.com
 #
-
-HOSTNAME="qlik-shared-vm.q-nnect.net" 
+# get global settings from file
+source settings.sh 
+#HOSTNAME="qlik-shared-vm.q-nnect.net" 
 
 
 ###############################################################################
@@ -308,5 +309,5 @@ CLIENTSECRET=$(curl -s \
  | jq '.value' -r)
 
 echo "New secret is $CLIENTSECRET"
-echo "$CLIENTSECRET" >keycloakclientsecret.txt
+echo "DEFAULTCLIENTSECRET=$CLIENTSECRET" >>settings.sh
 
