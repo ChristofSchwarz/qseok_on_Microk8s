@@ -4,3 +4,4 @@ Whereas the more wellknown "Minikube" is for test and development purposes, Micr
 
 **repository built in cooperation with Q-nnect AG, Mannheim/Germany**
 
+The folder /sh has all the files to make a silent install of all prerequisites and  QSEoK (Qlik Sense Enterprise on Kubernetes) on Ubuntu. 
