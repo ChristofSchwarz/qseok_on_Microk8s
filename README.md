@@ -7,8 +7,8 @@ an autonomous low-ops Kubernetes for clusters and it works on most flavours of L
 
 ## Edit settings.sh
 
-Before you start the silent install <a href="deploy_all.sh">deploy_all.sh</a>, make sure you reviewed and corrected the 
-settings.sh, which will be used throughout the installation processes
+*Before* you start the silent install with <a href="deploy_all.sh">bash deploy_all.sh</a>, make sure you reviewed and corrected the 
+<a href="settings.sh">settings.sh</a>, which will be used throughout the installation processes
 
 The scripts will
  - install a local NFS 
