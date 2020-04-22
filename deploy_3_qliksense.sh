@@ -85,7 +85,7 @@ global:
     storageClass: localnfs
 
 mongodb:
-  uri: "mongodb://qlik:Qlik1234@mongo-mongodb.default.svc.cluster.local:27017/qsefe?ssl=false"
+  uri: mongodb://qlik:Qlik1234@mongo-mongodb.default.svc:27017/qsefe?ssl=false
 
 edge-auth:
   config:
