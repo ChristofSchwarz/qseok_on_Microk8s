@@ -1,4 +1,4 @@
-# Qlik Sense Enterprise on Micro Kubernetes
+# Qlik Sense Enterprise on Micro K8s
 
 **repo built in cooperation with Qlik OEM partner Q-nnect AG, Mannheim/Germany**
 
@@ -12,8 +12,8 @@ settings.sh, which will be used throughout the installation processes
 
 The scripts will
  - install a local NFS 
- - Docker
- - Microkubernetes
+ - Docker CE
+ - Micro K8s
  - MongoDB
  - Postgres DB 
  - Keycloak Identity Provider
