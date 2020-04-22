@@ -89,7 +89,7 @@ echo "Installing Node Package Manager npm ..."
 sudo apt-get install npm -y
 
 echo "Creating private/public key pair"
-mkdir certs
+mkdir -p certs
 openssl genrsa -out certs/private.key 1024
 openssl rsa -in certs/private.key -pubout -out certs/public.key
 
