@@ -13,7 +13,6 @@ set -xe
 #
 # get global settings from file
 source settings.sh 
-#HOSTNAME="qlik-shared-vm.q-nnect.net" 
 
 
 ###############################################################################
