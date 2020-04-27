@@ -67,9 +67,9 @@ persistence:
   enabled: true
   existingClaim: pvc-mongo
 usePassword: true
-mongodbRootPassword: secretpassword
-mongodbUsername: qlik
-mongodbPassword: Qlik1234
+mongodbRootPassword: $MONGO_ROOT_PWD
+mongodbUsername: $MONGO_USER
+mongodbPassword: $MONGO_PWD
 mongodbDatabase: qsefe
 EOF
 
@@ -102,8 +102,8 @@ metadata:
     app: postgres
 data:
   POSTGRES_DB: postgresdb
-  POSTGRES_USER: pgadmin
-  POSTGRES_PASSWORD: pgadmin
+  POSTGRES_USER: $POSTGRES_USER
+  POSTGRES_PASSWORD: POSTGRES_PWD
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -194,9 +194,9 @@ spec:
         - name: DB_DATABASE
           value: "postgresdb"
         - name: DB_USER
-          value: "pgadmin"
+          value: "$POSTGRES_USER"
         - name: DB_PASSWORD
-          value: "pgadmin"
+          value: "$POSTGRES_PWD"
         - name: DB_ADDR
           value: postgres-svc
         ports:
