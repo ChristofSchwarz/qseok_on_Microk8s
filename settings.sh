@@ -9,6 +9,7 @@ QLIK_ADMIN_USER="admin"
 QLIK_ADMIN_PWD="Qlik1234"
 MONGO_USER="qlik"
 MONGO_PWD="Qlik1234"
+MONGO_ROOT_PWD="secretpassword"
 POSTGRES_USER="pgadmin"
 POSTGRES_PWD="pgadmin"
 
