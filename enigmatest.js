@@ -11,7 +11,7 @@ const https = require('https');
 //const fs = require('fs');
 const schema = require('./node_modules/enigma.js/schemas/12.170.2.json');
 // match this schema to your Qlik Sense version.
-const bearer = 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Im15LWtleS1pZGVudGlmaWVyIn0.eyJpc3MiOiJodHRwczovL3FsaWsuYXBpLmludGVybmFsIiwiYXVkIjoicWxpay5hcGkiLCJzdWIiOiJhZG1pbiIsImdyb3VwcyI6WyJFdmVyeW9uZSJdLCJuYW1lIjoiUWxpayBBUEkiLCJleHAiOjE4MDAwMDAwMDB9.v3eYuuxTA6mF991tYoEL-n4hyKRi5DMiZKya2-ye64hr-3aLjsJLlTi2hITsDhMfRAqwgDH6t-kangZN4hn4SdrrcSqzKVDaUg8juXmzTUpPHnk1ks3xdqovnzprmpL044tPHIbJuil03rGvQa6xS9kFem8Mj1ml7uo4ot75HqI';
+const bearer = 'eyJ....';
 const hostname = 'qlik-shared-vm.q-nnect.net';
 const debugInfo = true;
 const session = enigma.create({
