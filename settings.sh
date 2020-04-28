@@ -3,6 +3,7 @@
 #################################################################
 
 KUBERNETES_VERSION="1.15"  # Choose which kubernetes version should be used
+KUBLET_VERSION="1.15.11-00"
 HOSTNAME="172.20.16.146"
 QLIK_RELEASE="qlik-stable"  # can be "qlik-stable" or "qlik-edge" 
 QLIK_ADMIN_USER="admin"
