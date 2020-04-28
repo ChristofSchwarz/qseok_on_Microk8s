@@ -1,4 +1,4 @@
-# Qlik Sense Enterprise on Micro K8s
+# Qlik Sense Enterprise on Micro K8s/Ubuntu
 
 **repo built in cooperation with Qlik OEM partner Q-nnect AG, Mannheim/Germany**
 
@@ -19,4 +19,6 @@ The scripts will
  - Keycloak Identity Provider
  - QSEoK (Qlik Sense Enterprise on Kubernetes)
 
+To get it run `git clone https://github.com/ChristofSchwarz/qseok_on_Microk8s`
+To launch it go to `cd qseok_on_MicroK8s` and run `sudo bash deploy_all.sh`
 
