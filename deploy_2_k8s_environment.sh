@@ -103,7 +103,7 @@ metadata:
 data:
   POSTGRES_DB: postgresdb
   POSTGRES_USER: $POSTGRES_USER
-  POSTGRES_PASSWORD: POSTGRES_PWD
+  POSTGRES_PASSWORD: $POSTGRES_PWD
 ---
 apiVersion: apps/v1
 kind: Deployment
