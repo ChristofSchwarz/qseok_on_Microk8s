@@ -7,3 +7,5 @@ sed -i 's/forward . 168.63.129.16 168.63.129.16 /forward . 168.63.129.16 /g' tmp
 kubectl apply -f tmp.yaml
 # Restart the coredns pod to pick up the change
 kubectl delete pod -n kube-system -l k8s-app=kube-dns
+# Show the new configmap after the change
+kubectl describe cm -n kube-system -l k8s-app=kube-dns
