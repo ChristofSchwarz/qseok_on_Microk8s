@@ -5,6 +5,7 @@ do
   case $input in
      [yY]|[yY])
     helm delete qlik --purge
+    helm delete qlikinit --purge
     sudo kubectl delete pvc redis-data-qlik-dcaas-redis-master-0
     sudo kubectl delete pvc redis-data-qlik-redis-master-0
     sudo kubectl delete pvc redis-data-qlik-redis-user-state-master-0
