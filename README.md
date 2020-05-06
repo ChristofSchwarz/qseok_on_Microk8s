@@ -11,16 +11,18 @@ an autonomous low-ops Kubernetes for clusters and it works on most flavours of L
 <a href="settings.sh">settings.sh</a>, which will be used throughout the installation processes
 
 The scripts will
- - install a local NFS 
- - Docker CE
- - Micro K8s
- - MongoDB
- - Postgres DB 
- - Keycloak Identity Provider
+ - install a local NFS (Network Filesystem)
+ - Docker Community Edition
+ - MicroK8s
+ - MongoDB Community Edition
+ - A local identity provider (Keycloak https://www.keycloak.org/) and Postgres for persistance
  - QSEoK (Qlik Sense Enterprise on Kubernetes)
 
 ## Installation 
  - To get it run `git clone https://github.com/ChristofSchwarz/qseok_on_Microk8s`
- - To launch it go to `cd qseok_on_Microk8s/` and run `sudo bash deploy_all.sh`
+ - To launch it go to `cd qseok_on_Microk8s/` 
+ - Make sure you edit the `settings.sh` file to match your system
+ - Then run `sudo bash deploy_all.sh`
+ 
  
 
