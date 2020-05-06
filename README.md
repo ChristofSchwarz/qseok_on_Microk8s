@@ -1,6 +1,6 @@
 # Qlik Sense Enterprise on MicroK8s/Ubuntu
 
-**repo built in cooperation with Qlik OEM partner <a href="https://www.q-nnect.com/en/index.html>Q-nnect AG, Mannheim/Germany</a>**
+**repo built in cooperation with Qlik OEM partner <a href="https://www.q-nnect.com/en/index.html">Q-nnect AG, Mannheim/Germany</a>**
 
 Whereas the more wellknown "Minikube" is for test and development purposes, Micro Kubernetes (https://microk8s.io/) is 
 an autonomous low-ops Kubernetes for clusters and it works on most flavours of Linux. It can also run on multiple nodes and can scale.
