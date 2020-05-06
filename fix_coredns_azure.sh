@@ -1,5 +1,9 @@
 #AZUREDNS=127.0.0.53
 AZUREDNS=$(cat /etc/resolv.conf|grep nameserver -m 1|cut -d " " -f2)
+if [ "$AZUREDNS" == "8.8.8.8" ]
+then
+  AZUREDNS="168.63.129.16"
+fi
 if [ "$AZUREDNS" == "" ]
 then
   echo "Error: No nameserver entry found in /etc/resolv.conf"
