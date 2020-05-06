@@ -1,7 +1,9 @@
 #AZUREDNS=127.0.0.53
+#Parse the currently configured nameserver from Linux ("upstream DNS")
 AZUREDNS=$(cat /etc/resolv.conf|grep nameserver -m 1|cut -d " " -f2)
 if [ "$AZUREDNS" == "8.8.8.8" ]
 then
+  # if it is the Google DNS server 8.8.8.8 replace it with Microsoft's
   AZUREDNS="168.63.129.16"
 fi
 if [ "$AZUREDNS" == "" ]
