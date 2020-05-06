@@ -7,7 +7,7 @@ an autonomous low-ops Kubernetes for clusters and it works on most flavours of L
 
 ## Purpose
 
-The scripts will
+The bash scripts of this repo will
  - install a local NFS (Network Filesystem)
  - Docker Community Edition
  - MicroK8s
