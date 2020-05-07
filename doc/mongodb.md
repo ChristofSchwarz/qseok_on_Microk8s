@@ -10,9 +10,11 @@ To use `kubectl exec` you need to know the pod name. The pod name starts with "m
 the end, like mongo-mongodb-66cb45c6cb-99l5f ... so I am using another kubectl command to retrieve the current pod name using a 
 selector based on the non-changing app name)
 
+Note, that the database name in below commands is "qsefe", the user is "qlik", the password is "Qlik1234" (check in [settings.sh](../settings.sh) what your settings are) ...
+
 For example: **list all collections (“tables”)** <br/>
 `kubectl exec $(kubectl get pods --selector app=mongodb -o=name) -- bash -c 'mongo qsefe -u qlik -p Qlik1234 --eval "db.getCollectionNames()"'`
-Note, that the database name here is qsefe, the user is qlik, the password is Qlik1234 (check in [settings.sh](../settings.sh) what your settings are)
+
 
 For example: **list all entries from “tenants” collection** <br/>
 `kubectl exec $(kubectl get pods --selector app=mongodb -o=name) -- bash -c 'mongo qsefe -u qlik -p Qlik1234 --eval "db.tenants.find()"'`
