@@ -12,7 +12,7 @@ selector based on the non-changing app name)
 
 For example: **list all collections (“tables”)** <br/>
 `kubectl exec $(kubectl get pods --selector app=mongodb -o=name) -- bash -c 'mongo qsefe -u qlik -p Qlik1234 --eval "db.getCollectionNames()"'`
-Note, that the database name here is qsefe, the user is qlik, the password is Qlik1234 (check in [../settings.sh] what your settings are)
+Note, that the database name here is qsefe, the user is qlik, the password is Qlik1234 (check in [settings.sh](../settings.sh) what your settings are)
 
 For example: **list all entries from “tenants” collection** <br/>
 `kubectl exec $(kubectl get pods --selector app=mongodb -o=name) -- bash -c 'mongo qsefe -u qlik -p Qlik1234 --eval "db.tenants.find()"'`
