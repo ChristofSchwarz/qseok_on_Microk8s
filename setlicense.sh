@@ -1,4 +1,5 @@
 #!/bin/bash
+# This script puts a Qlik License for the current tenant using /api/v1/tenants/ZZZ/licenseDefinition
 source settings.sh
 QLIKTOKEN=$(sudo nodejs createjwt.js $QLIK_ADMIN_USER 1)
 # The answer of /api/v1/tenants/me will be a html with a redirect in this format:
