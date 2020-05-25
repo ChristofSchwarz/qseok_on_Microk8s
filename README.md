@@ -26,11 +26,21 @@ The bash scripts of this repo will
  
 | file | install method | object installed |
 | ----------- | ----- | ---- |
-| deploy_2.sh | helm | NFS client provisioner |
+| deploy_2.sh | helm | stable/nfs-client-provisioner |
 | deploy_2.sh | kubectl | pvc "qvc-qse" |
 | deploy_2.sh | kubectl | pvc "qvc-mongo" |
 | deploy_2.sh | helm | stable/mongodb |
 | deploy_2.sh | kubectl | pvc "pvc-postgres" |
+| deploy_2.sh | kubectl | configmap "postgres-config" |
+| deploy_2.sh | kubectl | deployment "postgres" |
+| deploy_2.sh | kubectl | service "postgres-svc" |
+| deploy_2.sh | kubectl | deployment "keycloak" |
+| deploy_2.sh | kubectl | service "keycloak-svc" |
+| deploy_2.sh | kubectl | ingress "keycloak-ingress" |
+
+
+
+
  
  
  
