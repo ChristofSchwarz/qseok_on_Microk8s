@@ -37,6 +37,7 @@ The bash scripts of this repo will
 | deploy_2.sh | kubectl | deployment "keycloak" |
 | deploy_2.sh | kubectl | service "keycloak-svc" |
 | deploy_2.sh | kubectl | ingress "keycloak-ingress" |
+| deploy_2.sh | curl | configure new client in keycloak |
 
 
 
