@@ -25,7 +25,7 @@ The bash scripts of this repo will
  ## Purpose of the deploy_*.sh files
  
  | file | install method | object installed |
- | ------ | ----- |
+ + ----------- + ----- +
  | deploy_2.sh | helm | NFS client provisioner |
  | deploy_2.sh | kubectl | pvc "qvc-qse" |
  | deploy_2.sh | kubectl | pvc "qvc-mongo" |
