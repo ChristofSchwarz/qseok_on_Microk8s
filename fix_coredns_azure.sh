@@ -1,16 +1,16 @@
 #AZUREDNS=127.0.0.53
 #Parse the currently configured nameserver from Linux ("upstream DNS")
-AZUREDNS=$(cat /etc/resolv.conf|grep nameserver -m 1|cut -d " " -f2)
-if [ "$AZUREDNS" == "8.8.8.8" ]
-then
+#AZUREDNS=$(cat /etc/resolv.conf|grep nameserver -m 1|cut -d " " -f2)
+#if [ "$AZUREDNS" == "8.8.8.8" ]
+#then
   # if it is the Google DNS server 8.8.8.8 replace it with Microsoft's
   AZUREDNS="168.63.129.16"
-fi
-if [ "$AZUREDNS" == "" ]
-then
-  echo "Error: No nameserver entry found in /etc/resolv.conf"
-else
-  echo "DNS nameserver is $AZUREDNS"
+#fi
+#if [ "$AZUREDNS" == "" ]
+#then
+#  echo "Error: No nameserver entry found in /etc/resolv.conf"
+#else
+  echo "DNS nameserver will be $AZUREDNS"
   # Fix for CoreDNS running on an Azure Linux VM by Christof Schwarz
   # the "forward" attribute in Corefile (configmap "coredns") cannot route
   # entries like *.internal.cloudapp.net ... if such addresses are sent to
@@ -28,5 +28,6 @@ else
   kubectl delete pod -n kube-system -l k8s-app=kube-dns
   # Show the new configmap after the change
   kubectl describe cm -n kube-system -l k8s-app=kube-dns
-fi
+#fi
+
 
