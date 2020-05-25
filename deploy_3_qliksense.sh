@@ -79,7 +79,7 @@ echo "[
 echo "
 # !!! No identity-provider section here !!!
 # configure identity-providers in identity-providers.json (Json, not yaml format)
-# and apply using \"sh upgrade-qlik.sh" (which uses this .yaml and identity-provider.json)
+# and apply using \"sh upgrade-qlik.sh\" (which uses this .yaml and identity-provider.json)
 
 engine:
   acceptEULA: \"yes\"
