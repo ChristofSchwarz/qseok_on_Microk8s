@@ -299,7 +299,8 @@ curl -s \
         \"enabled\": true,  \
         \"clientAuthenticatorType\": \"client-secret\",  \
         \"redirectUris\": [  \
-            \"https://$HOSTNAME/login/callback\"  \
+            \"https://$HOSTNAME/login/callback\",  \
+            \"https://$HOSTNAME\"  \
         ],  \
         \"webOrigins\": [],  \
         \"notBefore\": 0,  \
