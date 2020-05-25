@@ -77,6 +77,10 @@ echo "[
 # cat <<EOF | helm upgrade --install qlik $QLIK_RELEASE/qliksense --version 1.31.17 -f -
 
 echo "
+# !!! No identity-provider section here !!!
+# configure identity-providers in identity-providers.json (Json, not yaml format)
+# and apply using \"sh upgrade-qlik.sh" (which uses this .yaml and identity-provider.json)
+
 engine:
   acceptEULA: \"yes\"
 
@@ -102,14 +106,12 @@ elastic-infra:
         type: NodePort  
 " >qliksense.yaml
 
-# Create separate file idp.yaml
-echo "
+# Install qlik with qliksense.yaml and an addtional inline-yaml file for idp setups
+cat <<EOF |helm upgrade --install qlik $QLIK_RELEASE/qliksense -f qliksense.yaml -f -
 identity-providers:
   secrets:
     idpConfigs: $(cat identity-providers.json|tr -d '\n'|tr -s ' ')
-" >'~idp.yaml'
-
-helm upgrade --install qlik $QLIK_RELEASE/qliksense -f qliksense.yaml -f '~idp.yaml'
+EOF
 
 # in order for Edge-Auth to accept an IPD (Keycloak) over https with a self-signed certificate
 # we need to patch its deployment and set environment variable NODE_TLS_REJECT_UNAUTHORIZED=0
