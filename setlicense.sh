@@ -1,6 +1,9 @@
 #!/bin/bash
 source settings.sh
 QLIKTOKEN=$(sudo nodejs createjwt.js $QLIK_ADMIN_USER 1)
+# The answer of /api/v1/tenants/me will be a html with a redirect in this format:
+# Redirecting to <a href="https://172.20.16.193/api/v1/tenants/ERKF5lOB5yrBP0Go6a2vXBP7Z2rT9nTD"> ...
+# need to grep the part between 'tenants/' and '"' and save into variable QLIKTENANT
 QLIKTENANT=$(curl -s --insecure -X GET https://$HOSTNAME/api/v1/tenants/me -H "Authorization: Bearer $QLIKTOKEN"|grep -Po 'tenants/\K.*(?=")')
 echo "Current hostname is $HOSTNAME"
 echo "Current API token is $QLIKTOKEN"
