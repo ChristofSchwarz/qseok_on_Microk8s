@@ -22,5 +22,16 @@ The bash scripts of this repo will
  - Make sure you edit the `settings.sh` file to match your system.
  - Then run `sudo bash deploy_all.sh`
  
+ ## Purpose of the deploy_*.sh files
+ 
+ | file | install method | object installed |
+ | ------ | ----- |
+ | deploy_2.sh | helm | NFS client provisioner |
+ | deploy_2.sh | kubectl | pvc "qvc-qse" |
+ | deploy_2.sh | kubectl | pvc "qvc-mongo" |
+ | deploy_2.sh | helm | stable/mongodb |
+ | deploy_2.sh | kubectl | pvc "pvc-postgres" |
+ 
+ 
  
 
