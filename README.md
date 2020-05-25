@@ -39,6 +39,13 @@ The bash scripts of this repo will
 | deploy_2.sh | kubectl | ingress "keycloak-ingress" |
 | deploy_2.sh | curl | configure new client in keycloak |
 
+## Kubernetes Dashboard
+
+Using two bash files, one to 
+ - run K8s dashboard with port forwarding (port 32000) in background mode: k8s-dashboard-start.sh
+ - one to elimiante port forwarding and undeploy it: k8s-dashboard-stop.sh
+
+Using this version https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.1/aio/deploy/recommended.yaml
 
 
 
