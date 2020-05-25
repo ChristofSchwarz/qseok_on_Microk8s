@@ -117,3 +117,5 @@ EOF
 # we need to patch its deployment and set environment variable NODE_TLS_REJECT_UNAUTHORIZED=0
 
 sudo kubectl patch deployment qlik-edge-auth -p '{"spec":{"template":{"spec":{"containers":[{"name":"edge-auth", "env":[{"name":"NODE_TLS_REJECT_UNAUTHORIZED","value":"0"}]}]}}}}'
+
+bash waitforpods.sh 3600 20
